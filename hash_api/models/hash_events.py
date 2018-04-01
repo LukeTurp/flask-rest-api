@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 
-class HashEvent(object):
-    def __init__(self, abspath=None, filename=None, hashvalue=None, rundate=None):
-        self.abspath = abspath
-        self.filename = filename
-        self.hashvalue = hashvalue
-        self.rundate = rundate
-    
+import datetime
+
+from hash_api.base import db
+
+
+class HashEvent(db.Document):
+    abspath = db.StringField(max_length=255)
+    filename = db.StringField(max_length=50)
+    hashvalue = db.StringField(max_length=100)
+    rundate = db.DateTimeField(default=datetime.datetime.now)

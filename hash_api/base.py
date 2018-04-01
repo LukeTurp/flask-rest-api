@@ -4,6 +4,7 @@ import logging
 
 from flask import Flask
 from flask import jsonify
+from flask_mongoengine import MongoEngine
 
 from hash_api.config.settings import Config
 
@@ -17,7 +18,15 @@ handler.setFormatter(formatter)
 handler.setLevel(logging.DEBUG)
 
 app = Flask(__name__)
+app.config['MONGODB_DB'] = config.mongo_db_name
+app.config['MONGODB_HOST'] = config.mongo_host
+app.config['MONGODB_PORT'] = config.mongo_port
+app.config['MONGODB_USERNAME'] = config.mongo_user
+app.config['MONGODB_PASSWORD'] = config.mongo_pass
+
 app.logger.addHandler(handler)
+
+db = MongoEngine(app)
 
 @app.after_request
 def after_request(response):

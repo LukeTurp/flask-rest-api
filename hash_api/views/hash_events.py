@@ -12,10 +12,14 @@ def create_event(version):
         f'[!] Received request to: {request.path} from: {request.remote_addr}'
     )
     if version is not '1':
+        app.logger.error(
+            f'[-] Received invalid api version: {version}'
+        )
         return jsonify(
             {
                 "result": "Error",
-                "message": "Invalid version provided."
+                "message": "Invalid API version provided.",
+                "supported_versions": ['1']
             }
         ), 400
 
@@ -23,14 +27,17 @@ def create_event(version):
     event = HashEvent(
         abspath=request_json['abspath'],
         filename=request_json['filename'],
-        hashvalue=request_json['hashvalue'],
-        rundate=request_json['rundate']
+        hashvalue=request_json['hashvalue']
     )
-
+    event.save()
+    app.logger.info(
+        f'[+] Saved event to DB: {event.id}.'
+    )
     return jsonify(
         {
             'result': 'success',
-            'version': version,
-            'data': event.__dict__
+            'action': 'create',
+            'object': str(event.id),
+            'version': version
         }
     ), 200
