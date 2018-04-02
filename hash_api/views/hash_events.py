@@ -6,7 +6,7 @@ from hash_api.base import app
 
 from hash_api.models.hash_events import HashEvent
 
-@app.route('/api/<version>/events/create', methods=['POST'])
+@app.route('/api/v<version>/events/create', methods=['POST'])
 def create_event(version):
     app.logger.debug(
         f'[!] Received request to: {request.path} from: {request.remote_addr}'
@@ -37,7 +37,7 @@ def create_event(version):
         {
             'result': 'success',
             'action': 'create',
-            'object': str(event.id),
+            'id': str(event.id),
             'version': version
         }
     ), 200
