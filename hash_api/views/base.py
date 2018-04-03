@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+
 from flask import jsonify
 from flask import request
 
 from hash_api.base import app
+
 
 @app.route('/', methods=['GET'])
 def index():

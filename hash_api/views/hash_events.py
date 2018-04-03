@@ -2,11 +2,13 @@
 
 from flask import jsonify
 from flask import request
-from hash_api.base import app
+from flask_jwt_extended import jwt_required
 
+from hash_api.base import app
 from hash_api.models.hash_events import HashEvent
 
 @app.route('/api/v<version>/events/create', methods=['POST'])
+@jwt_required
 def create_event(version):
     app.logger.debug(
         f'[!] Received request to: {request.path} from: {request.remote_addr}'
