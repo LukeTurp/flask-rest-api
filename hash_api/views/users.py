@@ -75,4 +75,4 @@ def auth_user(version):
         ), 200
 
     else:
-        return jsonify({'msg': 'Invalid Credentials'}), 401
+        return jsonify({'msg': 'Invalid Credentials.'}), 401
