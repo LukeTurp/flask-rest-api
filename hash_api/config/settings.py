@@ -17,3 +17,4 @@ class Config(BaseConfig):
         self.mongo_user = os.environ['HASH_MONGO_USER']
         self.mongo_pass = os.environ['HASH_MONGO_PASS']
         self.mongo_db_name = os.environ['HASH_MONGO_DB']
+        self.jwt_secret = os.environ['HASH_JWT_SECRET']
