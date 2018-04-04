@@ -24,22 +24,25 @@ def create_event(version):
                 "supported_versions": ['1']
             }
         ), 400
-
     request_json = request.get_json()
-    event = HashEvent(
-        abspath=request_json['abspath'],
-        filename=request_json['filename'],
-        hashvalue=request_json['hashvalue']
-    )
-    event.save()
+    records_to_insert = [
+        HashEvent(
+            abspath=x['abspath'],
+            filename=x['filename'],
+            hashvalue=x['hashvalue']
+        )
+        for x in request_json
+    ]
+    HashEvent.objects.insert(records_to_insert)
+
     app.logger.info(
-        f'[+] Saved event to DB: {event.id}.'
+        '[+] Events saved to DB: {0}'.format(len(records_to_insert))
     )
     return jsonify(
         {
             'result': 'success',
             'action': 'create',
-            'id': str(event.id),
+            'events_processed': len(records_to_insert),
             'version': version
         }
     ), 200
