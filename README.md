@@ -124,6 +124,7 @@ http://127.0.0.1:8000/api/v1/users/create
 
 **Authenticates an Existing User to use HashAPI**
 **Returns access_token and refresh_token**
+
 http://127.0.0.1:8000/api/v1/user/auth
 - methods = POST
 - POST parameters = 'username','password'
@@ -135,17 +136,20 @@ http://127.0.0.1:8000/api/v1/user/auth
 ```
 
 **Store Hash Value of File Contents**
+
 http://127.0.0.1:8000/api/v1/events/create
 - methods = POST
 - POST parameters = 'abspath', 'filename', 'hashvalue'
-#### This method is best utilized with hash_cli
+- This method is best utilized with hash_cli
 
 **Refreshes access_token and refresh_token**
+
 http://127.0.0.1:8000/api/v1/token/refresh
 - methods = POST
 - Bearer refresh_token required
 
 **Logs User Out of HashAPI**
+
 http://127.0.0.1:8000/api/v1/user/logout
 - methods = DELETE
 - Bearer access_token required
