@@ -109,6 +109,16 @@ docker build -t $DOCKER_IMAGE $FLASK_PATH && \
 Create a HashAPI user using your REST client of choice.
 
 ## HashAPI Endpoints
+**Test Endpoint to Ensure Connection**
+
+http://127.0.0.1:8000/
+* methods = GET
+* returns:
+```
+{
+  "result": "success"
+}
+```
 
 **Registers A New User for HashAPI**
 
