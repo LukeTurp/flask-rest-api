@@ -11,7 +11,7 @@ The hash_api Python(3.6) flask web service API connects the hash_cli Client to a
 #### Install MongoDB via homebrew
 Install homebrew
 ```
-install homebrew @ http://brew.sh/
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 Update homebrew
 ```
