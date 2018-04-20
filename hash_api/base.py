@@ -31,7 +31,7 @@ app.config['MONGODB_PASSWORD'] = config.mongo_pass
 app.config['JWT_SECRET_KEY'] = config.jwt_secret
 app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=1)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=15)
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(hours=4)
 
 

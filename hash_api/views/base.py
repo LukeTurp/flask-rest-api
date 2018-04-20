@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import jsonify
-from flask import request
+from flask import jsonify, request
 
 from hash_api.base import app
 
