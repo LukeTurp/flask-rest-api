@@ -3,7 +3,7 @@ import os
 
 class BaseConfig(object):
     def __init__(self):
-        self.debug = True if os.environ['HASH_API_DEBUG'].lower() == true else False
+        self.debug = True if os.environ['HASH_API_DEBUG'].lower() == 'true' else False
         self.host = os.environ['HASH_API_HOST']
         self.port = int(os.environ['HASH_API_PORT'])
         self.application_secret = os.environ['HASH_APP_SECRET']
